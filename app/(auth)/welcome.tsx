@@ -14,9 +14,9 @@ const Onboarding = () => {
   const isLastSlide = activeIndex === onboarding.length - 1; //Check if swiper is on the last slide
 
   return (
-    //Onboarding screen in safe area
+    // Onboarding screen in safe area
     <SafeAreaView className="flex h-full items-center justify-between bg-white">
-      //User presses this to skip the onboarding screen to the sign up page
+      {/* User presses this to skip the onboarding screen to the sign up page */}
       <TouchableOpacity
         onPress={() => {
           router.replace("/(auth)/sign-up");
@@ -25,7 +25,8 @@ const Onboarding = () => {
       >
         <Text className="texxt-black text-md font-JakartaBold">Skip</Text>
       </TouchableOpacity>
-      //Onboarding swiper
+
+      {/* Onboarding swiper */}
       <Swiper
         ref={swiperRef}
         loop={false}
@@ -37,29 +38,30 @@ const Onboarding = () => {
         }
         onIndexChanged={(index) => setActiveIndex(index)}
       >
-        //Map each onboarding slide
+        {/* Map each onboarding slide */}
         {onboarding.map((item) => (
           <View key={item.id} className="flex items-center justify-center p-5">
-            //Image for the slide
+            {/* Image for the slide */}
             <Image
               source={item.image}
               className="w-full h-[300px]"
               resizeMode="contain"
             />
-            //Title
+            {/* Title */}
             <View className="flex flex-row items-center justify-center w-full mt-10">
               <Text className="text-black text-3xl font-bold mx-10 text-center">
                 {item.title}
               </Text>
             </View>
-            //Description
+            {/* Description */}
             <Text className="text-md font-JakartaSemiBold text-center text-[#858585] mx-10 mt-3">
               {item.description}
             </Text>
           </View>
         ))}
       </Swiper>
-      //Next button
+
+      {/* Next button */}
       <CustomButton
         title={isLastSlide ? "Get Started" : "Next"}
         onPress={() =>
