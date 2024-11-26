@@ -7,6 +7,7 @@ import { Link, router } from "expo-router";
 import OAuth from "@/components/OAuth";
 import { useSignUp } from "@clerk/clerk-expo";
 import { ReactNativeModal } from "react-native-modal";
+import { fetchAPI } from "../lib/fetch";
 const SignUp = () => {
   const [form, setForm] = useState({
     name: "",
@@ -49,7 +50,7 @@ const SignUp = () => {
       });
 
       if (completeSignUp.status === "complete") {
-        //TODO: Create a databas user profile
+        await fetchAPI("/(api)/user");
         await setActive({ session: completeSignUp.createdSessionId });
         setVerification({
           ...verification,
