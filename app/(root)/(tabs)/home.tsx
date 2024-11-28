@@ -16,6 +16,8 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as Location from "expo-location";
+import { Ride } from "@/types/type";
+import { router } from "expo-router";
 export default function Page() {
   const recentRides = [
     {
@@ -128,12 +130,19 @@ export default function Page() {
   const { user } = useUser();
   const loading = true;
 
-  const [hasPermissions, sethasPermissions] = useState(false);
+  const [hasPermissions, sethasPermissions] = useState<boolean>(false);
   const handleSignOut = () => {};
-  const handleDestinationPress = () => {};
+  const handleDestinationPress = (location: {
+    latitude: number;
+    longitude: number;
+    address: string;
+  }) => {
+    setDestinationLocation(location);
+    router.push("/(root)/find-ride");
+  };
 
   useEffect(() => {
-    const requestLocation = async () => {
+    async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
 
       if (status !== "granted") {
@@ -200,7 +209,7 @@ export default function Page() {
             </View>
 
             <GoogleTextInput
-              icons={icons.search}
+              icon={icons.search}
               containerStyle="bg-white shadow-md shadow-neutral-300"
               handlePress={handleDestinationPress}
             />
@@ -222,17 +231,6 @@ export default function Page() {
           </>
         )}
       />
-      {/* <SignedIn>
-        <Text>Hello {user?.emailAddresses[0].emailAddress}</Text>
-      </SignedIn> 
-      <SignedOut>
-        <Link href="/sign-in">
-          <Text>Sign In</Text>
-        </Link>
-        <Link href="/sign-up">
-          <Text>Sign Up</Text>
-        </Link>
-      </SignedOut> */}
     </SafeAreaView>
   );
 }
