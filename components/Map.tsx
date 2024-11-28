@@ -1,4 +1,4 @@
-import { useDriverStore, useLocationStore } from "@/store/store";
+import { useDriverStore, useLocationStore } from "@/store";
 import { View, Text } from "react-native";
 import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import { calculateRegion, generateMarkersFromData } from "@/lib/map";
