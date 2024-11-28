@@ -1,11 +1,16 @@
 import React from "react";
-import { Text, View } from "react-native";
+import CustomButton from "./CustomButton";
 
 const Payment = () => {
+  const onPaymentSheet = async () => {};
   return (
-    <View>
-      <Text>Payment</Text>
-    </View>
+    <>
+      <CustomButton
+        title="Confirm Ride"
+        className="my-10"
+        onPress={onPaymentSheet}
+      />
+    </>
   );
 };
 
