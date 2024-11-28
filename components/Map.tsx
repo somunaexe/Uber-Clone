@@ -1,7 +1,7 @@
 import { useDriverStore, useLocationStore } from "@/store/store";
 import { View, Text } from "react-native";
 import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
-import { calculateRegion, generateMarkersFromData } from "@/lib/Map";
+import { calculateRegion, generateMarkersFromData } from "@/lib/map";
 import { useEffect, useState } from "react";
 import { MarkerData } from "@/types/type";
 import { icons } from "@/constants";
