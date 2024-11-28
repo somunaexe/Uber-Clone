@@ -1,5 +1,5 @@
 import { Text, View } from "react-native";
-import { useLocationStore } from "@/store/store";
+import { useLocationStore } from "@/store";
 import RideLayout from "@/components/RideLayout";
 import GoogleTextInput from "@/components/GoogleTextInput";
 import { icons } from "@/constants";
