@@ -7,7 +7,7 @@ import { Link, router } from "expo-router";
 import OAuth from "@/components/OAuth";
 import { useSignUp } from "@clerk/clerk-expo";
 import { ReactNativeModal } from "react-native-modal";
-import { fetchAPI } from "../lib/fetch";
+import { fetchAPI } from "../../lib/fetch";
 const SignUp = () => {
   const [form, setForm] = useState({
     name: "",
