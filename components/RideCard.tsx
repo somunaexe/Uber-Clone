@@ -3,16 +3,15 @@ import { Ride } from "@/types/type";
 import { Image, Text, View } from "react-native";
 import { formatDate, formatTime } from "@/lib/utils";
 const RideCard = ({
-  ride: {
-    destination_longitude,
-    destination_latitude,
-    origin_address,
-    destination_address,
-    created_at,
-    ride_time,
-    driver,
-    payment_status,
-  },
+  ride,
+  //   destination_longitude,
+  //   destination_latitude,
+  //   origin_address,
+  //   destination_address,
+  //   created_at,
+  //   ride_time,
+  //   driver,
+  //   payment_status,
 }: {
   ride: Ride;
 }) => (
@@ -30,14 +29,14 @@ const RideCard = ({
           <View className="flex flex-row items-center gap-x-2">
             <Image source={icons.to} className="w-5 h-5" />
             <Text className="text-md font-JakartaMedium" numberOfLines={1}>
-              {origin_address}
+              {ride.origin_address}
             </Text>
           </View>
 
           <View className="flex flex-row items-center gap-x-2">
             <Image source={icons.point} className="w-5 h-5" />
             <Text className="text-md font-JakartaMedium" numberOfLines={1}>
-              {destination_address}
+              {ride.destination_address}
             </Text>
           </View>
         </View>
@@ -49,7 +48,7 @@ const RideCard = ({
             Date & Time
           </Text>
           <Text className="text-md font-JakartaMedium">
-            {formatDate(created_at)} {formatTime(ride_time)}
+            {formatDate(ride.created_at)} {formatTime(ride.ride_time)}
           </Text>
         </View>
 
@@ -58,7 +57,7 @@ const RideCard = ({
             Driver
           </Text>
           <Text className="text-md font-JakartaMedium">
-            {driver.first_name} {driver.last_name}
+            {ride.driver.first_name} {ride.driver.last_name}
           </Text>
         </View>
 
@@ -66,7 +65,9 @@ const RideCard = ({
           <Text className="text-md font-JakartaMedium text-gray-500">
             Car Seats
           </Text>
-          <Text className="text-md font-JakartaMedium">{driver.car_seats}</Text>
+          <Text className="text-md font-JakartaMedium">
+            {ride.driver.car_seats}
+          </Text>
         </View>
 
         <View className="flex flex-row items-center justify-between w-full mb-5">
@@ -74,9 +75,9 @@ const RideCard = ({
             Payment Status
           </Text>
           <Text
-            className={`text-md capitalize font-JakartaBold ${payment_status === "paid" ? "text-green-500" : "text-red-500"}`}
+            className={`text-md capitalize font-JakartaBold ${ride.payment_status === "paid" ? "text-green-500" : "text-red-500"}`}
           >
-            {payment_status}
+            {ride.payment_status}
           </Text>
         </View>
       </View>
