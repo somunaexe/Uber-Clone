@@ -6,21 +6,10 @@ import { icons } from "@/constants";
 import { formatTime } from "@/lib/utils";
 import { useDriverStore, useLocationStore } from "@/store";
 import Payment from "@/components/Payment";
-import { useEffect, useState } from "react";
 const BookRide = () => {
   const { user } = useUser();
   const { userAddress, destinationAddress } = useLocationStore();
   const { drivers, selectedDriver } = useDriverStore();
-
-  const [publishableKey, setPublishableKey] = useState("");
-  const fetchPublishableKey = async () => {
-    const key = await fetchKey();
-    setPublishableKey(key);
-  };
-
-  useEffect(() => {
-    fetchPublishableKey();
-  }, []);
 
   const driverDetails = drivers?.filter(
     (driver) => +driver.id === selectedDriver
